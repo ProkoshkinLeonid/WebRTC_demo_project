@@ -1,0 +1,11 @@
+body{ font-family: Inter, Roboto, Arial, sans-serif; background:#f5f7fb; color:#111 }
+.app{ max-width:1000px; margin:20px auto; padding:20px; background:#fff; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06) }
+.controls{ display:flex; flex-direction:column; gap:8px }
+.controls input{ padding:6px 8px }
+.buttons{ display:flex; gap:8px; margin-top:6px }
+button{ padding:8px 12px; border-radius:6px; cursor:pointer }
+.room{ margin-top:12px }
+.videos{ display:flex; gap:20px }
+.doctors-grid{ display:flex; flex-wrap:wrap; max-width:600px }
+.back{ margin-bottom:12px }
+.hint{ color:#666; font-size:13px }
