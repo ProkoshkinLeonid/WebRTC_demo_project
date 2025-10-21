@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  janus:
+    image: canyan/janus-gateway:0.10.7
+    ports:
+      - "8088:8088"
+      - "8089:8089"
+      - "8188:8188"
+      - "10000-10200:10000-10200/udp"
+    networks:
+      - webrtc-network
+    restart: unless-stopped
+
+  webrtc-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_JANUS_WS_URL=ws://janus:8188
+    depends_on:
+      - janus
+    networks:
+      - webrtc-network
+    restart: unless-stopped
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./package.json:/app/package.json
+
+networks:
+  webrtc-network:
+    driver: bridge
