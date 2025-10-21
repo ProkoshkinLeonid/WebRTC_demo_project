@@ -18,18 +18,18 @@ export default function Doctor({roomId, display}){
 
         const initialize = async () => {
             try {
-                setStatus('Connecting to Janus...');
+                setStatus('Соединение с Janus...');
                 const janusInstance = await initJanus();
 
                 if (!mounted) return;
 
                 janusRef.current = janusInstance;
-                console.log('✅ Janus connected');
+                console.log('✅ Успешное соединение с Janus');
 
                 await setupPublisher(janusInstance);
 
             } catch (err) {
-                console.error('❌ Initialization error', err);
+                console.error('❌ Ошибка инициализации', err);
                 setStatus('Error: ' + err.message);
             }
         };
@@ -97,7 +97,7 @@ export default function Doctor({roomId, display}){
                             }
                         });
                     } else {
-                        setStatus('⏳ Waiting for patient...');
+                        setStatus('⏳ Ожидаем пациента...');
                     }
                 }
                 else if(msg.videoroom === 'event'){

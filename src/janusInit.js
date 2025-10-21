@@ -1,24 +1,24 @@
 export function initJanus(server = 'ws://localhost:8188') {
     return new Promise((resolve, reject) => {
-        if (!window.Janus) return reject(new Error('Janus not loaded'));
+        if (!window.Janus) return reject(new Error('Janus не загрузился'));
 
         window.Janus.init({
             debug: true,
             callback: function() {
-                console.log('Janus initialized successfully');
+                console.log('Janus успешно инициализировался');
 
                 const janus = new window.Janus({
                     server,
                     success: function() {
-                        console.log('Janus connected to server');
+                        console.log('Janus подключился к серверу');
                         resolve(janus);
                     },
                     error: function(err) {
-                        console.error('Janus connection error:', err);
+                        console.error('Janus ошибка подключения:', err);
                         reject(err);
                     },
                     destroyed: function() {
-                        console.log('Janus destroyed');
+                        console.log('Janus разрушен');
                     },
                     // Добавляем обработчики для отладки
                     iceState: function(state) {

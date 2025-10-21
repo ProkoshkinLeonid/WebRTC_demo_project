@@ -6,7 +6,7 @@ import Doctor from './components/Doctor'
 export default function App(){
     const [role, setRole] = useState(null)
     const [room, setRoom] = useState('1234')
-    const [name, setName] = useState('User'+Math.floor(Math.random()*1000))
+    const [name, setName] = useState('Пользователь'+ " " +Math.floor(Math.random()*1000))
 
 
     return (
@@ -14,7 +14,7 @@ export default function App(){
             <h1>WebRTC</h1>
             {!role ? (
                 <div className="controls">
-                    <label>Номер комнаты: <input value={room} onChange={e=>setRoom(e.target.value)} /></label>
+                    <label>Номер комнаты: <input value={room} onChange={e=> setRoom(e.target.value)} /></label>
                     <label>Ваше имя: <input value={name} onChange={e=>setName(e.target.value)} /></label>
                     <div className="buttons">
                         <button onClick={()=>setRole('patient')}>Войти как пациент</button>
@@ -23,7 +23,7 @@ export default function App(){
                 </div>
             ) : (
                 <div>
-                    <button className="back" onClick={()=>setRole(null)}>Выйти</button>
+                    <button className="back" onClick={()=> setRole(null)}>Выйти</button>
                     {role === 'patient'
                         ? <Patient roomId={parseInt(room,10)} display={name} />
                         : <Doctor roomId={parseInt(room,10)} display={name} />
