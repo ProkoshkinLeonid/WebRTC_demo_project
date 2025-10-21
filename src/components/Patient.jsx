@@ -723,10 +723,10 @@ export default function Patient({ roomId, display }) {
                                     }}>
                                         <span>
                                             <strong>{doctor.display}</strong>
-                                            {doctor.isActive && <span style={{color: '#28a745', marginLeft: '5px'}}>✅ Connected</span>}
+                                            {doctor.isActive && <span style={{color: '#28a745', marginLeft: '5px'}}>✅ Подключён</span>}
                                         </span>
                                         <div>
-                                            {!doctor.isActive ? (
+                                            {!doctor.isActive &&
                                                 <button
                                                     onClick={() => connectToDoctor(doctor.id, doctor.display)}
                                                     style={{
@@ -738,23 +738,8 @@ export default function Patient({ roomId, display }) {
                                                         cursor: 'pointer'
                                                     }}
                                                 >
-                                                    Connect
-                                                </button>
-                                            ) : (
-                                                <button
-                                                    onClick={() => disconnectFromDoctor(doctor.id)}
-                                                    style={{
-                                                        padding: '4px 8px',
-                                                        background: '#dc3545',
-                                                        color: 'white',
-                                                        border: 'none',
-                                                        borderRadius: '4px',
-                                                        cursor: 'pointer'
-                                                    }}
-                                                >
-                                                    Disconnect
-                                                </button>
-                                            )}
+                                                    Подключиться
+                                                </button>}
                                         </div>
                                     </div>
                                 ))}
@@ -818,7 +803,7 @@ export default function Patient({ roomId, display }) {
                                                 fontSize: '12px'
                                             }}
                                         >
-                                            Disconnect
+                                            Отключиться
                                         </button>
                                     </div>
                                 </div>
